@@ -1,0 +1,21 @@
+create table Fact_sales(
+Product_Key int not null,
+Customer_Key int not null,
+Territory_key int not null,
+Order_date_key int not null,
+Sales_Order_id varchar(50) not null,
+Line_Number int not null,
+Quantity int,
+Unit_Price money,
+Unit_Cost money,
+Tax_Amount money,
+Freight money,
+Extended_Sales money,
+Extended_Cost money,
+Created_At datetime not null default(getdate()),
+constraint PK_FactSales_Fact primary key (Sales_Order_id,Line_Number),
+constraint FK_Product_Key foreign key(Product_Key) references Product_Dim(Product_Key),
+constraint FK_Customer_Key foreign key(Customer_Key) references Customer_Dim(Customer_Key),
+constraint FK_Territory_key foreign key(Territory_key) references Territory_Dim(Territory_key),
+constraint FK_Date_key foreign key(Order_date_key) references Date_Dim(Date_Key)
+)
